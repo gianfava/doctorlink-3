@@ -115,6 +115,7 @@
     <script>
         // Função botões - página pacientes
 
+        
         // Exibe as informações pessoais por padrão
         document.getElementById('Info').classList.remove('hidden');
 
