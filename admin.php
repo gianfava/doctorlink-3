@@ -61,6 +61,7 @@
       <button type="button" class="btn btn-outline-primary" onclick="abrirModalCadastro()">CADASTRAR NOVO MÉDICO</button>
       <button type="button" class="btn btn-outline-primary" onclick="abrirModalUsuarios()">VISUALIZAR USUÁRIOS</button>
       <button class="btn btn-outline-success" onclick="atualizarPagina()">ATUALIZAR PÁGINA</button>
+      <button class="btn btn-outline-danger" onclick="logoutAdmin()">LOGOUT ADMIN</button>
     </div>
     <!-- fim botões -->
 
@@ -152,6 +153,17 @@
   </div>
 
   <script>
+  
+// Função para logout do admin
+    function logoutAdmin() {
+        // Pede confirmação antes de fazer logout
+        var confirmacao = confirm("Tem certeza que deseja sair?");
+
+        if (confirmacao) {
+            // Redireciona para a página de logout (logout.php)
+            window.location.href = "logout.php";
+        }
+    }  
   
 
 // BOTÃO VISUALIZAR USUÁRIOS

@@ -16,35 +16,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Consulta SQL para verificar as credenciais do usuário
-    $sql = "SELECT senha FROM usuario WHERE nomeUser = '$nomeUser'";
+    $sql = "SELECT * FROM usuario WHERE nomeUser = '$nomeUser'";
     $resultado = $conexao->query($sql);
 
-    if ($resultado->num_rows == 1) {
-        $row = $resultado->fetch_assoc();
-        $senhaArmazenada = $row["senha"]; // Obtém a senha armazenada no banco de dados
 
-        // Verificar se a senha inserida corresponde à senha armazenada (sem hash)
-        if ($senhaUsuario === $senhaArmazenada) {
-            // A senha está correta
-            // Verificar se é o administrador
-            if ($nomeUser === 'admin' && $senhaUsuario === 'admin') {
-                // Administrador
-                session_start(); // Inicie a sessão
-                $_SESSION['nomeUser'] = $nomeUser; // Armazene o nome do usuário na sessão
-                header('Location: admin.php'); // Redirecionamento para a página do administrador
-                exit; // Importante para parar a execução após o redirecionamento
+    if ($resultado) {
+        if ($resultado->num_rows == 1) {
+            $row = $resultado->fetch_assoc();
+            $senhaArmazenada = $row["senha"]; 
+            if ($senhaUsuario === $senhaArmazenada) {
+
+                session_start(); 
+                $_SESSION['nomeUser'] = $row['nome'];
+                $_SESSION['sexoFromDB'] = $row['sexo'];
+                $_SESSION['endereco'] = $row['endereco'];
+                $_SESSION['emailFromDB'] = $row['email'];
+                $_SESSION['planoFromDB'] = $row['plano'];
+                $_SESSION['tipoSanguineoFromDB'] = $row['tipoSanguineo'];
+                $_SESSION['qualMedicamentoFromDB'] = $row['qualMedicamento'];
+                $_SESSION['fotoUserFromDB'] = $row['fotoUser'];
+
+                // Verifique se o usuário e a senha são "admin"
+                if ($nomeUser === "admin" && $senhaUsuario === "admin") {
+                    header('Location: admin.php'); // Redirecionamento para a página admin.php
+                    exit; // Importante para parar a execução após o redirecionamento
+                } else {
+                    header('Location: logado.php'); // Redirecionamento para a página logado.php
+                    exit; // Importante para parar a execução após o redirecionamento
+                }
             } else {
-                // Usuário normal
-                session_start(); // Inicie a sessão
-                $_SESSION['nomeUser'] = $nomeUser; // Armazene o nome do usuário na sessão
-                header('Location: logado.html'); // Redirecionamento para a página do usuário normal
-                exit; // Importante para parar a execução após o redirecionamento
+                $mensagemErro = "Credenciais de login inválidas.";
             }
         } else {
             $mensagemErro = "Credenciais de login inválidas.";
         }
     } else {
-        $mensagemErro = "Credenciais de login inválidas.";
+        $mensagemErro = "Erro na consulta: " . $conexao->error;
     }
 
     $conexao->close();
@@ -54,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Redirecionamento com base na mensagem de erro
 if (isset($mensagemErro)) {
-    header("Location: login.html?erro=" . urlencode($mensagemErro));
-    exit;
+    header("Location: login.php?erro=" . urlencode($mensagemErro));
+    exit;
 }
 ?>
