@@ -35,7 +35,7 @@
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
             <li><a href="index.html"><i class="fa fa-home-alt"></i> Home</a></li>
-            <li><a href="especialidades.html"><i class="fa fa-stethoscope"></i> Especialidades</a></li>
+            <li><a href="especialidades.php"><i class="fa fa-stethoscope"></i> Especialidades</a></li>
             <li><a href="planos.html"><i class="fas fa-laptop-medical"></i> Planos</a></li>
             <li><a href="sobre.html"><i class="fas fa-vector-square"></i> Sobre Nós</a></li>
           </ul>
