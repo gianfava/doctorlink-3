@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($checkResult->num_rows > 0) {
         showAlert("Nome de usuário ou email já existem. Por favor, escolha outro nome de usuário ou email.");
-        echo "<script>window.location.href = '/cadastroPaciente.html';</script>"; // Redirecionamento
+        echo "<script>window.location.href = '/login.php';</script>"; // Redirecionamento
         exit; // Importante para parar a execução após o redirecionamento
     } else {
         // Se não houver resultados na verificação, proceda com a inserção no banco de dados
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             VALUES ('$nomeUser', '$senha', '$senhaSegura', '$nome', '$email', '$dataNascimento', '$sexo', '$cep', '$endereco', '$medicamento', '$qualMedicamento', '$tipoSanguineo', '$plano', '$newFileName')";
 
                     if ($conexao->query($sql) === true) {
-                        echo "<script>window.location.href = '/cadastroPaciente.html';</script>"; // Redirecionamento
+                        echo "<script>window.location.href = '/login.php';</script>"; // Redirecionamento
                         exit; // Importante para parar a execução após o redirecionamento
                     } else {
                         showAlert("Erro ao inserir dados: " . $conexao->error);
