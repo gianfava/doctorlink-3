@@ -512,7 +512,7 @@
         <div class="footer-links" id="footer">
           <ul>
             <li><a href="index.html" alt=""><i class="fa fa-home-alt"></i> Home</a></li>
-            <li><a href="especialidades.html" alt=""><i class="fa fa-stethoscope"></i> Especialidades</a></li>
+            <li><a href="especialidades.php" alt=""><i class="fa fa-stethoscope"></i> Especialidades</a></li>
             <li><a href="planos.html" alt=""><i class="fas fa-laptop-medical"></i> Planos</a></li>
             <li><a href="sobre.html" alt=""><i class="fas fa-vector-square"></i> Sobre Nós</a></li>
             

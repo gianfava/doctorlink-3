@@ -1,0 +1,10 @@
+.modal-body {
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+
+
+.modal-header h2 {
+    color: #00826e;
+}
