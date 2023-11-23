@@ -10,7 +10,7 @@ function Enviar() {
  
 
 function AbrirEspecialidades() {
-  window.open("especialidades.html");
+  window.open("especialidades.php");
 }
 
 function AbrirPlanos() {
